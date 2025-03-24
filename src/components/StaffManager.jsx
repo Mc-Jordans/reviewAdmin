@@ -30,28 +30,25 @@ function StaffManager() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-950 rounded-lg shadow-md p-6">
+    <div className="bg-white dark:bg-gray-950 rounded-lg shadow-md p-4 sm:p-6">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
         Manage Staff
       </h3>
-      <p className="text-gray-600 dark:text-gray-400 mb-6">
+      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">
         Add staff and assign them to departments.
       </p>
-      <form
-        onSubmit={handleAddStaff}
-        className="mb-6 flex flex-col sm:flex-row gap-4"
-      >
+      <form onSubmit={handleAddStaff} className="mb-6 flex flex-col gap-4">
         <input
           type="text"
           value={newStaffName}
           onChange={(e) => setNewStaffName(e.target.value)}
           placeholder="Enter staff name"
-          className="w-full sm:w-64 border border-gray-300 rounded-md p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+          className="w-full border border-gray-300 rounded-md p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white text-sm"
         />
         <select
           value={newStaffDepartment}
           onChange={(e) => setNewStaffDepartment(e.target.value)}
-          className="w-full sm:w-64 border border-gray-300 rounded-md p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+          className="w-full border border-gray-300 rounded-md p-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white text-sm"
         >
           <option value="">Select department</option>
           {departments.map((dept) => (
@@ -62,7 +59,7 @@ function StaffManager() {
         </select>
         <button
           type="submit"
-          className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 flex items-center justify-center"
+          className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 flex items-center justify-center text-sm"
         >
           <Plus className="h-4 w-4 mr-2" />
           Add Staff
@@ -75,10 +72,10 @@ function StaffManager() {
             className="flex items-center justify-between p-4 rounded-lg border dark:border-gray-700"
           >
             <div>
-              <p className="font-medium text-gray-900 dark:text-white">
+              <p className="font-medium text-gray-900 dark:text-white truncate">
                 {staff.name}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
                 {departments.find((d) => d.id === staff.department)?.name}
               </p>
             </div>
