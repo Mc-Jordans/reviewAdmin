@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   BarChart,
   LineChart,
@@ -18,6 +18,7 @@ function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("home");
   const [sidebarOpen, setSidebarOpen] = useState(true); // Default to open
   const [activeSubTab, setActiveSubTab] = useState("overview");
+  const sidebarRef = useRef(null);
 
   // Mock data for main content
   const departmentRatings = [
@@ -73,10 +74,32 @@ function AdminDashboard() {
     },
   ];
 
+  // Handle clicks outside the sidebar to close it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        sidebarOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target)
+      ) {
+        setSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside); // For touch devices
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [sidebarOpen]);
+
   return (
-    <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 relative">
       {/* Sidebar */}
       <div
+        ref={sidebarRef}
         className={`fixed inset-y-0 left-0 w-64 bg-white dark:bg-gray-950 shadow-md transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out z-50 flex flex-col`}
@@ -127,8 +150,17 @@ function AdminDashboard() {
         </nav>
       </div>
 
+      {/* Overlay for touch-outside-to-hide */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setSidebarOpen(false)}
+          onTouchStart={() => setSidebarOpen(false)} // For touch devices
+        />
+      )}
+
       {/* Main Content */}
-      <div className="flex-1 p-4 overflow-y-auto">
+      <div className="flex-1 p-4 overflow-y-auto relative z-10">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
           <button
             onClick={() => setSidebarOpen(true)}
