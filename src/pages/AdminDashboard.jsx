@@ -16,7 +16,7 @@ import StaffManager from "../components/StaffManager";
 function AdminDashboard() {
   const [timeRange, setTimeRange] = useState("week");
   const [activeTab, setActiveTab] = useState("home");
-  const [sidebarOpen, setSidebarOpen] = useState(true); // Default to open
+  const [sidebarOpen, setSidebarOpen] = useState(false); // Default to close
   const [activeSubTab, setActiveSubTab] = useState("overview");
   const sidebarRef = useRef(null);
 

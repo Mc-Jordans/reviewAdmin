@@ -1,1 +1,114 @@
 @import "tailwindcss";
+
+@import "tailwindcss";
+
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for IE and older Edge */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+}
+
+/* Custom Scrollbar for the entire page */
+html {
+  overflow-y: auto; /* Ensure scrolling is enabled */
+}
+
+/* Chrome, Safari, Edge */
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #e5f0ff; /* Light blue track */
+  border-radius: 4px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #2563eb; /* Blue thumb */
+  border-radius: 4px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8; /* Darker blue on hover */
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  html::-webkit-scrollbar-track {
+    background: #1f2937; /* Dark gray track */
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background: #60a5fa; /* Lighter blue thumb */
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6; /* Slightly darker blue on hover */
+  }
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2563eb #e5f0ff; /* Thumb and track */
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    scrollbar-color: #60a5fa #1f2937;
+  }
+}
+
+/* Custom Scrollbar for the dropdown */
+.dropdown-custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-custom-scrollbar::-webkit-scrollbar-track {
+  background: #e5f0ff;
+  border-radius: 4px;
+}
+
+.dropdown-custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 4px;
+}
+
+.dropdown-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dropdown-custom-scrollbar::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+
+  .dropdown-custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #60a5fa;
+  }
+
+  .dropdown-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+  }
+}
+
+.dropdown-custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #2563eb #e5f0ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dropdown-custom-scrollbar {
+    scrollbar-color: #60a5fa #1f2937;
+  }
+}
