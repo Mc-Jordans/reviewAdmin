@@ -103,8 +103,9 @@ html {
 }
 
 .dropdown-custom-scrollbar {
-  scrollbar-width: thin;
+  /* scrollbar-width: thin; */
   scrollbar-color: #2563eb #e5f0ff;
+  scrollbar-width: 0;
 }
 
 @media (prefers-color-scheme: dark) {

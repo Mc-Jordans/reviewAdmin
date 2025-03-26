@@ -15,7 +15,7 @@ import {
 import DepartmentsManager from "../components/DepartmentsManager";
 import StaffManager from "../components/StaffManager";
 
-function AdminDashboard() {
+function AdminDashboard(props) {
   const [timeRange, setTimeRange] = useState("week");
   const [activeTab, setActiveTab] = useState("home");
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -713,8 +713,12 @@ function AdminDashboard() {
         )}
 
         {/* Sidebar Content */}
-        {activeTab === "departments-management" && <DepartmentsManager />}
-        {activeTab === "staff-management" && <StaffManager />}
+        {activeTab === "departments-management" && (
+          <DepartmentsManager isDarkMode={isDarkMode} />
+        )}
+        {activeTab === "staff-management" && (
+          <StaffManager isDarkMode={isDarkMode} />
+        )}
       </div>
     </div>
   );
